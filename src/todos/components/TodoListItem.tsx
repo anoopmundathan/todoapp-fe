@@ -8,7 +8,7 @@ interface TodoListItemProps {
 export const TodoListItem = ({ todo }: TodoListItemProps) => {
     return (
         <li>
-            <input type="checkbox" />
+            <input type="checkbox" checked={todo.completed} />
             {todo.name}
         </li>
     );
