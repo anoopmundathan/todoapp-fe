@@ -4,7 +4,7 @@ import { Todo } from "../interfaces";
 import { ActionTypeKeys } from "./actionTypes";
 
 export interface FetchTodos {
-    type: ActionTypeKeys.FETCH_TODOS
+    type: ActionTypeKeys.FETCH_TODOS;
 }
 
 export const fetchTodos = () => {
@@ -17,8 +17,8 @@ export const fetchTodos = () => {
 }
 
 export interface FetchTodosSuccess {
-    type: ActionTypeKeys.FETCH_TODOS_SUCCESS,
-    payload: Todo[]
+    type: ActionTypeKeys.FETCH_TODOS_SUCCESS;
+    payload: Todo[];
 }
 
 export const fetchTodosSuccess = (payload: Todo[]): FetchTodosSuccess => ({
@@ -27,16 +27,24 @@ export const fetchTodosSuccess = (payload: Todo[]): FetchTodosSuccess => ({
 })
 
 export interface FetchTodosFail {
-    type: ActionTypeKeys.FETCH_TODOS_FAIL
+    type: ActionTypeKeys.FETCH_TODOS_FAIL;
 }
 
 export const fetchTodosFail = (): FetchTodosFail => ({
     type: ActionTypeKeys.FETCH_TODOS_FAIL
 })
 
+export interface InputTextChange {
+    type: ActionTypeKeys.INPUT_TEXT_CHANGE;
+    payload: string;
+}
+
+export const inputTextChange = (payload: string): InputTextChange => ({
+    type: ActionTypeKeys.INPUT_TEXT_CHANGE,
+    payload
+})
+
 export type TodoActions = FetchTodos 
     | FetchTodosSuccess 
-    | FetchTodosFail;
-
-
-
+    | FetchTodosFail
+    | InputTextChange;

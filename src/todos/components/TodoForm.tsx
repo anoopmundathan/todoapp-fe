@@ -1,10 +1,19 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, FC, useState } from "react";
+import { InputTextChange } from "../actions/actionCreators";
 
-export const TodoForm = () => {
-    const [name, setName] = useState("add");
+export interface TodoFormDispatchProps {
+    change: (text: string) => InputTextChange
+}
+
+type Props = TodoFormDispatchProps;
+
+export const TodoForm: FC<Props> = ({ change }: Props) => {
+
+    const [name, setName] = useState<string>("");
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setName(event.target.value)
+        change(event.target.value);
+        setName(event.target.value);
     }
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

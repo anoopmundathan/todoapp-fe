@@ -7,6 +7,6 @@ export interface Todo {
 export interface TodoState {
     items: Todo[];
     loading: boolean;
-    name?: string;
+    inputText?: string;
 }
 

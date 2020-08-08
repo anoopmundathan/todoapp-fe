@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react";
 import styled from "styled-components";
+import TodoForm from "../containers/TodoForm";
 import { Todo } from "../interfaces";
-import { TodoForm } from "./TodoForm";
 import { TodoList } from "./TodoList";
 
 const TodoAppContainer = styled.div`
