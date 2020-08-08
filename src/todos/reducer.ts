@@ -6,6 +6,6 @@ const initialTodos: Todo[] = [
     { id: 3, name: "three", completed: true },
 ]
 
-export default (state: Todo[] = initialTodos, action: any) => {
+export default (state: Todo[] = initialTodos, action: any): Todo[] => {
     return state;
 }

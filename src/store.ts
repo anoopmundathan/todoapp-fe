@@ -1,5 +1,5 @@
 import { createStore } from "redux";
-import reducer from "./todos/reducer";
+import reducer from "./rootReducer";
 
 declare global {
     interface Window {

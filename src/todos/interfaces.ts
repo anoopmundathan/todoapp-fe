@@ -4,6 +4,6 @@ export interface Todo {
     completed: boolean;
 }
 
-export interface RootState {
+export interface TodoState {
     todos: Todo[];
 }
