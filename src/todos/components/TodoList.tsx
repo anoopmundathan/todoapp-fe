@@ -11,7 +11,7 @@ export const TodoList = ({ todos }: TodoListProps) => {
     return (
         <div className="Todo-List">
             <ul>
-                {todos.map((todo: Todo) => <TodoListItem todo={todo} />)}
+                {todos.map((todo: Todo) => <TodoListItem key={todo.id} todo={todo} />)}
             </ul>
         </div>
     )

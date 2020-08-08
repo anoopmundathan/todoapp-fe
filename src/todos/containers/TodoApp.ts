@@ -1,9 +1,13 @@
 import { connect } from "react-redux";
-import { TodoApp, TodoAppProps } from "../components/TodoApp";
-import { TodoState } from "../interfaces";
+import { RootState } from "../../rootReducer";
+import { fetchTodos } from "../actions/actionCreators";
+import { TodoApp, TodoAppDispatchProps, TodoAppProps } from "../components/TodoApp";
 
-const mapStateToProps = (state: TodoState): TodoAppProps => ({
-    todos: state.todos 
+const mapStateToProps = (state: RootState): TodoAppProps => ({
+    todos: state.todos.items
 });
 
-export default connect(mapStateToProps)(TodoApp);
+const mapDispatchToProps: TodoAppDispatchProps  = {
+    fetchTodos
+}
+export default connect(mapStateToProps, mapDispatchToProps)(TodoApp);

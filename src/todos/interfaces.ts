@@ -5,5 +5,7 @@ export interface Todo {
 }
 
 export interface TodoState {
-    todos: Todo[];
+    items: Todo[];
+    loading: boolean;
 }
+

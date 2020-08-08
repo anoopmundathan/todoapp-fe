@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import styled from "styled-components";
 import { Todo } from "../interfaces";
 import { TodoForm } from "./TodoForm";
@@ -14,9 +14,20 @@ export interface TodoAppProps {
     todos: Todo[];
 }
 
-export const TodoApp: FC<TodoAppProps> = ({
-    todos
-}: TodoAppProps) => {
+export interface TodoAppDispatchProps {
+    fetchTodos: () => void;
+}
+
+type Props = TodoAppProps & TodoAppDispatchProps;
+export const TodoApp: FC<Props> = ({
+    todos,
+    fetchTodos
+}: Props) => {
+
+    useEffect(() => {
+        fetchTodos()
+    }, []);
+    
     return (
         <TodoAppContainer>
            <TodoForm />
