@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { addNewTodo, getAllTodos } from "../api";
+import { addNewTodoApi, getAllTodosApi, updateTodoApi } from "../api";
 import { Todo } from "../interfaces";
 import { ActionTypeKeys } from "./actionTypes";
 
@@ -10,7 +10,7 @@ export interface FetchTodos {
 export const fetchTodos = () => {
     return (dispatch: Dispatch) => {
         dispatch({ type: ActionTypeKeys.FETCH_TODOS });
-        getAllTodos()
+        getAllTodosApi()
         .then(res => dispatch(fetchTodosSuccess(res)))
         .catch(() => dispatch(fetchTodosFail()));
     }
@@ -41,10 +41,9 @@ export interface AddTodo {
 
 export const addTodo = (newTodo: string) => {
     return (dispatch: Dispatch) => {
-        dispatch({ type: ActionTypeKeys.ADD_TODO });
-        addNewTodo(newTodo)
+        addNewTodoApi(newTodo)
         .then(() => {
-            getAllTodos()
+            getAllTodosApi()
             .then(res => dispatch(fetchTodosSuccess(res)))
             .catch(() => dispatch(fetchTodosFail()));
         })
@@ -68,10 +67,37 @@ export const addTodoFail = (): AddTodoFail => ({
     type: ActionTypeKeys.ADD_TODO_FAIL
 });
 
+export interface UpdateTodo {
+    type: ActionTypeKeys.UPDATE_TODO;
+}
+
+
+export const updateTodo = (id: number) => {
+    return (dispatch: Dispatch) => {
+        updateTodoApi(id)
+        .then(() => {
+            getAllTodosApi()
+            .then(res => dispatch(fetchTodosSuccess(res)))
+            .catch(() => dispatch(fetchTodosFail()));
+        })
+        .catch(() => dispatch(updateTodoFail()))
+    }
+}
+
+export interface UpdateTodoFail {
+    type: ActionTypeKeys.UPDATE_TODO_FAIL
+}
+
+export const updateTodoFail = (): UpdateTodoFail => ({
+    type: ActionTypeKeys.UPDATE_TODO_FAIL
+});
+
 export type TodoActions = FetchTodos 
     | FetchTodosSuccess 
     | FetchTodosFail
     | AddTodo
     | AddTodoSuccess
-    | AddTodoFail;
+    | AddTodoFail
+    | UpdateTodo;
+
 

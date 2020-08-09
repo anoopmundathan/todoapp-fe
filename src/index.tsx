@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import { Provider } from "react-redux";
 import "./index.css";
 import { store } from "./store";
-import App from './todos/containers/TodoApp';
+import TodoApp from './todos/containers/TodoApp';
 
 ReactDOM.render(
   <React.StrictMode>
      <Provider store={store}>
-      <App />
+      <TodoApp />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

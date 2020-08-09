@@ -1,17 +1,21 @@
 import React from "react";
+import TodoListItem from "../containers/TodoListItem";
 import { Todo } from "../interfaces";
-import { TodoListItem } from "./TodoListItem";
 
-interface TodoListProps {
+export interface TodoListProps {
     todos: Todo[];
 }
 
-export const TodoList = ({ todos }: TodoListProps) => {
+type Props = TodoListProps;
+
+export const TodoList = ({ todos }: Props) => {
     
+    const renderTodoListItem = () => todos.map((todo: Todo) => <TodoListItem key={todo.id} todo={todo} />);
+
     return (
         <div className="Todo-List">
             <ul>
-                {todos.map((todo: Todo) => <TodoListItem key={todo.id} todo={todo} />)}
+                {renderTodoListItem()}
             </ul>
         </div>
     )
