@@ -19,7 +19,6 @@ const Input = styled.input`
     color: #505462;
 `;
 
-const errorMessage = ''
 export interface TodoFormDispatchProps {
     submit: (text: string) => void;
 }
