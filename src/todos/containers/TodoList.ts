@@ -1,9 +1,15 @@
 import { connect } from "react-redux";
 import { RootState } from "../../rootReducer";
-import { TodoList, TodoListProps } from "../components/TodoList";
+import { fetchTodos } from "../actions/actionCreators";
+import { TodoList, TodoListDispatchProps, TodoListProps } from "../components/TodoList";
+
+const mapDispatchToProps: TodoListDispatchProps  = {
+    fetchTodos
+}
 
 const mapStateToProps = (state: RootState): TodoListProps => ({
-    todos: state.todos.items
+    todos: state.todos.items,
+    loading: state.todos.loading
 });
 
-export default connect(mapStateToProps)(TodoList);
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
