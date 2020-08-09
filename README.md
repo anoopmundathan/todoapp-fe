@@ -1,4 +1,4 @@
-# onthemoney-todoapp-fe
+# todoapp-fe
 Todo app frontend react app
 
 ### Tech used
@@ -16,8 +16,8 @@ Styled components
 
 ### Setup
 ```
-$ git clone https://github.com/anoopmundathan/onthemoney-todoapp-fe.git
-$ cd onthemoney-todoapp-fe
+$ git clone https://github.com/anoopmundathan/todoapp-fe.git
+$ cd todoapp-fe
 ```
 ### Install
 ```
