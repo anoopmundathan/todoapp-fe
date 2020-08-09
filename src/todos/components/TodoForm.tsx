@@ -11,6 +11,7 @@ export const TodoForm: FC<Props> = ({
 }: Props) => {
 
     const [name, setName] = useState<string>("");
+    const [error, setError] = useState<boolean>(false);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
@@ -18,13 +19,19 @@ export const TodoForm: FC<Props> = ({
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        submit(name);
-        setName("");
+        if (name) {
+            submit(name);
+            setName("");
+            setError(false);
+        } else {
+            setError(true);
+        }
     }
 
     return (
         <form onSubmit={handleSubmit}>
             <input type="text" value={name} onChange={handleChange} />
+            {error && <p>Please enter todo name</p>}
         </form>
     )
 }
