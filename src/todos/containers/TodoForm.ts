@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
-import { inputTextChange } from "../actions/actionCreators";
+import { addTodo } from "../actions/actionCreators";
 import { TodoForm, TodoFormDispatchProps } from "../components/TodoForm";
 
 const mapDispatchToProps: TodoFormDispatchProps  = {
-    change: inputTextChange
+    submit: addTodo
 }
 
 export default connect(null, mapDispatchToProps)(TodoForm);

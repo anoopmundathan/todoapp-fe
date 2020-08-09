@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { getAllTodos } from "../api";
+import { addNewTodo, getAllTodos } from "../api";
 import { Todo } from "../interfaces";
 import { ActionTypeKeys } from "./actionTypes";
 
@@ -34,17 +34,44 @@ export const fetchTodosFail = (): FetchTodosFail => ({
     type: ActionTypeKeys.FETCH_TODOS_FAIL
 })
 
-export interface InputTextChange {
-    type: ActionTypeKeys.INPUT_TEXT_CHANGE;
+export interface AddTodo {
+    type: ActionTypeKeys.ADD_TODO;
     payload: string;
 }
 
-export const inputTextChange = (payload: string): InputTextChange => ({
-    type: ActionTypeKeys.INPUT_TEXT_CHANGE,
-    payload
-})
+export const addTodo = (newTodo: string) => {
+    return (dispatch: Dispatch) => {
+        dispatch({ type: ActionTypeKeys.ADD_TODO });
+        addNewTodo(newTodo)
+        .then(() => {
+            getAllTodos()
+            .then(res => dispatch(fetchTodosSuccess(res)))
+            .catch(() => dispatch(fetchTodosFail()));
+        })
+        .catch(() => dispatch(addTodoFail()))
+    }
+}
+
+export interface AddTodoSuccess {
+    type: ActionTypeKeys.ADD_TODO_SUCCESS;
+}
+
+export const addTodoSuccess = (): AddTodoSuccess => ({
+    type: ActionTypeKeys.ADD_TODO_SUCCESS
+});
+
+export interface AddTodoFail {
+    type: ActionTypeKeys.ADD_TODO_FAIL;
+}
+
+export const addTodoFail = (): AddTodoFail => ({
+    type: ActionTypeKeys.ADD_TODO_FAIL
+});
 
 export type TodoActions = FetchTodos 
     | FetchTodosSuccess 
     | FetchTodosFail
-    | InputTextChange;
+    | AddTodo
+    | AddTodoSuccess
+    | AddTodoFail;
+

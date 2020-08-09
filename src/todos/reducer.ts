@@ -26,11 +26,6 @@ export default (state: TodoState = initialState, action: TodoActions): TodoState
                 items: action.payload,
                 loading: false
             };
-        case ActionTypeKeys.INPUT_TEXT_CHANGE:
-            return {
-                ...state,
-                inputText: action.payload
-            }
         default:
             return state;
     }
