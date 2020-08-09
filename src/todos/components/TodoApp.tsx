@@ -11,6 +11,18 @@ const TodoAppContainer = styled.div`
     margin-top: 5%;
 `;
 
+const Header = styled.div`
+    background: #fe2f7c;
+    padding-top: 15px;
+    padding-bottom: 15px;
+`;
+
+const HeadingText = styled.h2`
+    text-align: center;
+    margin: 0;
+    color: #fff;
+`;
+
 const Container = styled.div`
    width: 80%;
 `;
@@ -29,15 +41,17 @@ export const TodoApp: FC<Props> = ({ fetchTodos }: Props) => {
     
     return (
         <>
-        <div style={{ border: "1px solid red", background: "#fe2f7c", paddingTop: "15px", paddingBottom: "15px"}}>
-            <h2 style={{ textAlign: "center", margin: 0, color: "#fff" }}>TODO</h2>
-        </div>
-        <TodoAppContainer>
-            <Container>
-                <TodoForm />
-                <TodoList />
-            </Container>
-        </TodoAppContainer>
+            <Header>
+                <HeadingText>
+                    Another Todo App
+                </HeadingText>
+            </Header>
+            <TodoAppContainer>
+                <Container>
+                    <TodoForm />
+                    <TodoList />
+                </Container>
+            </TodoAppContainer>
         </>
     );
 } 
