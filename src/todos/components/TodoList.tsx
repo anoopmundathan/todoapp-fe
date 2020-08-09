@@ -1,6 +1,16 @@
 import React from "react";
+import styled from "styled-components";
 import TodoListItem from "../containers/TodoListItem";
 import { Todo } from "../interfaces";
+
+const TodoListContainer = styled.div`
+`;
+
+const UList = styled.ul`
+    list-style: none;
+    padding: 0;
+`;
+
 
 export interface TodoListProps {
     todos: Todo[];
@@ -13,10 +23,10 @@ export const TodoList = ({ todos }: Props) => {
     const renderTodoListItem = () => todos.map((todo: Todo) => <TodoListItem key={todo.id} todo={todo} />);
 
     return (
-        <div className="Todo-List">
-            <ul>
+        <TodoListContainer>
+            <UList>
                 {renderTodoListItem()}
-            </ul>
-        </div>
+            </UList>
+        </TodoListContainer>
     )
 }

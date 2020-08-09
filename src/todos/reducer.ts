@@ -2,11 +2,7 @@ import { TodoActions } from "./actions/actionCreators";
 import { ActionTypeKeys } from "./actions/actionTypes";
 import { Todo, TodoState } from "./interfaces";
 
-const initialTodos: Todo[] = [
-    { id: 1, name: "one", completed: false },
-    { id: 2, name: "two", completed: false },
-    { id: 3, name: "three", completed: true },
-];
+const initialTodos: Todo[] = [];
 
 const initialState: TodoState = {
     loading: false,

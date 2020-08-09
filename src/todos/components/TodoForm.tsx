@@ -1,5 +1,25 @@
 import React, { ChangeEvent, FC, useState } from "react";
+import styled from "styled-components";
 
+const TodoFormContainer = styled.div`
+   flex: 1;
+   width: 100%;
+   height: 100%;
+`;
+
+const Form = styled.form`
+    flex: 1;
+`;
+
+const Input = styled.input`
+    width: 100%;
+    height: 40px;
+    font-size: 30px;
+    padding: 15px;
+    color: #505462;
+`;
+
+const errorMessage = ''
 export interface TodoFormDispatchProps {
     submit: (text: string) => void;
 }
@@ -11,7 +31,6 @@ export const TodoForm: FC<Props> = ({
 }: Props) => {
 
     const [name, setName] = useState<string>("");
-    const [error, setError] = useState<boolean>(false);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
@@ -22,16 +41,14 @@ export const TodoForm: FC<Props> = ({
         if (name) {
             submit(name);
             setName("");
-            setError(false);
-        } else {
-            setError(true);
         }
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" value={name} onChange={handleChange} />
-            {error && <p>Please enter todo name</p>}
-        </form>
+        <TodoFormContainer>
+            <Form onSubmit={handleSubmit}>
+                <Input type="text" value={name} onChange={handleChange} placeholder={"Enter todo"}/>
+            </Form>
+        </TodoFormContainer>
     )
 }
