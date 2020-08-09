@@ -33,4 +33,4 @@ http://localhost:3000
 ```
 
 ## Note
-Backend API server should be up and running - head over to this repo for running the same - https://github.com/anoopmundathan/onthemoney-todoapp-be.git
+Backend API server should be up and running - head over to [this repo](https://github.com/anoopmundathan/onthemoney-todoapp-be.git) for running the same
